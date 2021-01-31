@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mmc.report.mapper.ReportTaskVoteMapper">
+
+   <insert id="insert">
+       insert into report_task_vote (report_task_id,reviewer_id,vote_result,create_time)
+       values(#{reportTaskId},#{reviewerId},#{voteResult},#{createTime})
+   </insert>
+
+    <update id="update">
+        update report_task_vote set vote_result = #{voteResult}
+        where reviewer_id=#{reviewerId} and report_task_id=#{reportTaskId}
+    </update>
+
+    <select id="queryByReportTaskId" resultType="com.mmc.report.domain.ReportTaskVote">
+        select * from report_task_vote where report_task_id = #{reportTaskId}
+    </select>
+</mapper>
